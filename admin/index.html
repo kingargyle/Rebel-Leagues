@@ -31,29 +31,29 @@
 		
 	<div id="login" class="clear" ng-if="!loggedIn">
 		<div class="left">
-			<h3>Continuer sans authentification</h3>
-			<p>Cette option vous permet d'ajouter un nouveau joueur ou une nouvelle partie.</p>
-			<button ng-click="noLogin()">Ne pas s'authentifier</button>
+			<h3>Continue without authentication</h3>
+			<p>This option lets you add a new player or a new game.</p>
+			<button ng-click="noLogin()">Do not authenticate</button>
 		</div>
 		<div class="right">
-			<h3>S'authentifier</h3>
-			<p>Pour avoir accès plus de fonctionnalités</p>
+			<h3>Authenticate</h3>
+			<p>To Access more features</p>
 			<form ng-class="{invalid: loginInfo.invalid}">
-				<input type="text" ng-model="loginInfo.username" placeholder="Nom d'utilisateur" />
-				<input type="password" ng-model="loginInfo.password" placeholder="Mot de passe" />
-				<button ng-click="login(loginInfo)">S'authentifier</button>
+				<input type="text" ng-model="loginInfo.username" placeholder="username" />
+				<input type="password" ng-model="loginInfo.password" placeholder="password" />
+				<button ng-click="login(loginInfo)">Authenticate</button>
 			</form>
 		</div>
 	</div>
 	
 	<div class="userInfo anonymous" ng-if="loggedIn && anonymousUser">
-		<h3>Vous êtes un utilisateur anonyme.</h3>
-		<p>Voulez-vous vous <a ng-click="resetLogin()">authentifier</a>?</p>
+		<h3>You are an anonymous user.</h3>
+		<p>Do you want to <a ng-click="resetLogin()">authenticate</a>?</p>
 	</div>
 	
 	<div class="userInfo" ng-if="loggedIn && !anonymousUser">
-		<h3>Bonjour, {{ user.username }}!</h3>
-		<p>Voulez-vous vous <a ng-click="logout()">déconnecter</a>?</p>
+		<h3>Hello, {{ user.username }}!</h3>
+		<p>Do you want to <a ng-click="logout()">logout</a>?</p>
 	</div>
 		
 		

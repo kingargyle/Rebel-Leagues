@@ -1,5 +1,5 @@
-var monthNames = [ "janvier", "février", "mars", "avril", "mai", "juin",
-	"juillet", "août", "septembre", "octobre", "novembre", "décembre" ];
+var monthNames = [ "january", "february", "march", "april", "may", "june",
+	"july", "august", "september", "october", "november", "december" ];
 
 var rebelLeaguesControllers = angular.module('rebelLeaguesControllers', ['ui.bootstrap', 'ngSanitize']);
 
@@ -453,21 +453,6 @@ rebelLeaguesControllers.controller('leagueInfoCtrl', ['$scope', '$http', '$sce',
 				
 	}
 ]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 rebelLeaguesControllers.directive('gamesFilterEditor', function($http) {
     return {

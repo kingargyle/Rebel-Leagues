@@ -1,5 +1,5 @@
-var monthNames = [ "janvier", "février", "mars", "avril", "mai", "juin",
-	"juillet", "août", "septembre", "octobre", "novembre", "décembre" ];
+var monthNames = [ "january", "february", "march", "april", "may", "june",
+	"july", "august", "september", "october", "november", "december" ];
 
 var rebelLeaguesAdminControllers = angular.module('rebelLeaguesAdminControllers', ['ui.bootstrap']);
 
@@ -87,7 +87,7 @@ rebelLeaguesAdminControllers.controller('mainCtrl', ['$scope', '$http',
 rebelLeaguesAdminControllers.controller('addGameCtrl', ['$scope', '$http',
 	function ($scope, $http) {
 	
-		$scope.title = "Ajouter une partie";
+		$scope.title = "Add Game";
 		$scope.partial = "partials/addGame.html";
 		
 		$scope.expanded = false;
@@ -199,7 +199,7 @@ rebelLeaguesAdminControllers.controller('addGameCtrl', ['$scope', '$http',
 rebelLeaguesAdminControllers.controller('addPlayerCtrl', ['$scope', '$http',
 	function ($scope, $http) {
 	
-		$scope.title = "Ajouter un joueur";
+		$scope.title = "Add Player";
 		$scope.partial = "partials/addPlayer.html";
 	
 		$scope.expanded = false;
@@ -236,7 +236,7 @@ rebelLeaguesAdminControllers.controller('addPlayerCtrl', ['$scope', '$http',
 rebelLeaguesAdminControllers.controller('editGameCtrl', ['$scope', '$http',
 	function ($scope, $http) {
 	
-		$scope.title = "Modifier une partie";
+		$scope.title = "Edit Game";
 		$scope.partial = "partials/editGame.html";
 		
 		$scope.expanded = false;
@@ -318,7 +318,7 @@ rebelLeaguesAdminControllers.controller('editGameCtrl', ['$scope', '$http',
 		
 		$scope.delete = function (selectedGame) {
 		
-			if (window.confirm("Êtes-vous certain de vouloir supprimer la partie?\nCette action ne peut être annulée.")) {
+			if (window.confirm("Are you sure you want to delete the game?\nThis action can not be undone.")) {
 				$http.delete('../api/games/'+selectedGame.game_id).success( function (data) {
 					alert("Partie supprimée.");
 					$scope.selectedGameId = false;
@@ -341,7 +341,7 @@ rebelLeaguesAdminControllers.controller('editGameCtrl', ['$scope', '$http',
 rebelLeaguesAdminControllers.controller('editLeagueCtrl', ['$scope', '$http',
 	function ($scope, $http) {
 	
-		$scope.title = "Modifier les paramètres de league";
+		$scope.title = "Edit League";
 		$scope.partial = "partials/editLeague.html";
 	
 		$scope.expanded = false;
@@ -380,7 +380,7 @@ rebelLeaguesAdminControllers.controller('editLeagueCtrl', ['$scope', '$http',
 rebelLeaguesAdminControllers.controller('addAttributeCtrl', ['$scope', '$http',
 	function ($scope, $http) {
 	
-		$scope.title = "Ajouter un attribut";
+		$scope.title = "Add Attribute";
 		$scope.partial = "partials/addAttribute.html";
 	
 		$scope.expanded = false;
@@ -424,7 +424,7 @@ rebelLeaguesAdminControllers.controller('addAttributeCtrl', ['$scope', '$http',
 rebelLeaguesAdminControllers.controller('editAttributeCtrl', ['$scope', '$http',
 	function ($scope, $http) {
 	
-		$scope.title = "Modifier ou supprimer un attribut";
+		$scope.title = "Edit Attributes";
 		$scope.partial = "partials/editAttribute.html";
 	
 		$scope.expanded = false;

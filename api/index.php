@@ -61,7 +61,8 @@ getRoute()->get('/admins(?:/?)', array('Admin', 'getAdmins'));
 getRoute()->post('/admins(?:/?)', array('Admin', 'addAdmin'));
 getRoute()->post('/players(?:/?)', array('Admin', 'addPlayer'));
 getRoute()->post('/factions(?:/?)', array('Admin', 'addFaction'));
-getRoute()->post('/attributes(?:/?)', array('Admin', 'addAttribute'));
+getRoute()->post('/attributes(?:/?)', array('Admin', 'addAttribute'));
+
 
 getRoute()->post('/games(?:/?)', array('Admin', 'addGame'));
 getRoute()->put('/games/(\d+)(?:/?)', array('Admin', 'editGame'));
@@ -780,7 +781,7 @@ WHERE percentage_played_with >=50
 	}
 	
 	
-	public static function getRanking($requested_ranking_method_id = -1) {
+	public static function getRanking($requested_ranking_method_id = 2) {
 	
 		list($league, $possible_ranking_methods) = self::internal_getLeague();
 		

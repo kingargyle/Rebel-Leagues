@@ -31,16 +31,22 @@
 </head>
 
 <body>
+	<script type="text/javascript">
+	   var lang = window.navigator.language || window.navigator.userLanguage; 
+       if (lang === 'en-US') {
+         console.log("language is english");
+       }
+	</script>
 
 <div id="topBar">
 	<div>
 		<nav ng-controller="mobileMenuCtrl">
 			<i class="fa fa-bars" ng-click="showMenu = !showMenu"></i>
 			<div ng-show="showMenu">
-				<a active-link="active" href="#/gamesHistory" ng-click="showMenu = false">Historique des parties</a>
-				<a active-link="active" href="#/playersRanking" ng-click="showMenu = false">Classement des joueurs</a>
-				<a active-link="active" href="#/factionsReview" ng-click="showMenu = false">Statistiques des factions</a>
-				<a active-link="active" href="#/playersReview" ng-click="showMenu = false">Statistiques des joueurs</a>
+				<a active-link="active" href="#/gamesHistory" ng-click="showMenu = false">Game History</a>
+				<a active-link="active" href="#/playersRanking" ng-click="showMenu = false">Player Rankings</a>
+				<a active-link="active" href="#/factionsReview" ng-click="showMenu = false">Faction Statistics</a>
+				<a active-link="active" href="#/playersReview" ng-click="showMenu = false">Player Statistics</a>
 			</show>
 		</nav>
 	
@@ -62,25 +68,25 @@
 		</header>
 		
 		<nav class="clear">
-			<a active-link="active" href="#/gamesHistory">Historique des parties</a>
-			<a active-link="active" href="#/playersRanking">Classement des joueurs</a>
-			<a active-link="active" href="#/factionsReview">Statistiques des factions</a>
-			<a active-link="active" href="#/playersReview">Statistiques des joueurs</a>
+			<a active-link="active" href="#/gamesHistory">Game History</a>
+			<a active-link="active" href="#/playersRanking">Player Rankings</a>
+			<a active-link="active" href="#/factionsReview">Factions Statistics</a>
+			<a active-link="active" href="#/playersReview">Player Statistics</a>
 		</nav>
 			
 		<aside>
 			<div id="stats" ng-controller="leagueStatsCtrl">
 				<ul>
 					<li class="clear">
-						<span class="left">Parties jouées</span>
+						<span class="left">Games Played</span>
 						<span class="right">{{ games_played }}</span>
 					</li>
 					<li class="clear">
-						<span class="left">Joueurs actifs</span>
+						<span class="left">Active Players</span>
 						<span class="right">{{ active_players }}</span>
 					</li>
 					<li class="clear">
-						<span class="left">Joueurs inscrits</span>
+						<span class="left">Total Players</span>
 						<span class="right">{{ total_players }}</span>
 					</li>
 				</ul>
@@ -96,11 +102,11 @@
 
 		<footer class="clear">
 			<div class="left">
-				Cette ligue utilise le système <strong>Rebel<strong>Leagues</strong></strong>,<br />
-				développé par <strong>Kevin Bélisle</strong> et <strong>Michaël Juneau</strong>.
+				This league is using <strong>Rebel<strong>Leagues</strong></strong>,<br />
+				developed by <strong>Kevin Bélisle</strong> and <strong>Michaël Juneau</strong>.
 			</div>
 			<div class="right">
-				<a href="admin">Accéder à l'administration</a><br />
+				<a href="admin">Access Administration</a><br />
 				RebelLeagues v0.1
 			</div>
 		</footer>

@@ -3,11 +3,11 @@
 
     <section id="usageGraph">
         <h2>
-            Historique d'utilisation
+            Historic Utilization
         </h2>
         
-        <span>
-            Ce graphique représente l'utilisation moyenne de chaque faction, calculée grâce à une moyenne mobile sur les 10 dernières parties.
+        <span> 
+           This graph represents the average use of each faction , calculated using a moving average of the last 10 games.
         </span>
         
         <canvas style="height: 200px"
@@ -25,7 +25,7 @@
 		<select
 			ng-model="factionid"
 			ng-change="getFactionStats()">
-			<option value="" disabled>Choisir une faction...</option>
+			<option value="" disabled>Select a faction...</option>
             <option ng-repeat="faction in factions" value="{{faction.faction_id}}">&nbsp;&nbsp;&nbsp;{{faction.name}}</option>
 		</select>
         

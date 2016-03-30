@@ -4,23 +4,23 @@
 	<div class="left">
 
 		<select class="fullWidth" ng-model="game.player1_id" ng-options="player.player_id as (player.nickname + ' (' + player.firstname + ' ' + player.lastname + ')') for player in players">
-			<option value="">Choisir premier joueur (vainqueur)</option>
+			<option value="">Choose first player (winner)</option>
 		</select>
 		
 		<select class="fullWidth" ng-model="game.player1_faction_id" ng-options="f.faction_id as f.name group by f.parent_faction_name for f in factions">
-			<option value="">Choisir faction du premier joueur</option>
+			<option value="">Select first player faction</option>
 		</select>
 		
 		<select class="fullWidth" ng-model="game.player2_id" ng-options="player.player_id as (player.nickname + ' (' + player.firstname + ' ' + player.lastname + ')') for player in players">
-			<option value="">Choisir deuxième joueur</option>
+			<option value="">Choose second player</option>
 		</select>
 		
 		<select class="fullWidth" ng-model="game.player2_faction_id" ng-options="f.faction_id as f.name group by f.parent_faction_name for f in factions">
-			<option value="">Choisir faction du deuxième joueur</option>
+			<option value="">Select second player faction</option>
 		</select>
 		
-		<label class="fullWidth"> <input type="checkbox" ng-model="game.is_draw" /> Finie en nulle</label>
-		<label class="fullWidth"> <input type="checkbox" ng-model="game.is_time_runout" /> Terminée par manque de temps</label>
+		<label class="fullWidth"> <input type="checkbox" ng-model="game.is_draw" /> Game is a draw</label>
+		<label class="fullWidth"> <input type="checkbox" ng-model="game.is_time_runout" /> Time Ran Out</label>
 		
 		<div attribute-editor ng-model="game.attributes"></div>
 		
@@ -39,6 +39,6 @@
 	</div>
 	
 	<button ng-click="submit(game)" class="fullWidth">Submit</button>
-	<label class="fullWidth"> <input type="checkbox" ng-model="buggy.keep_values" ng-change="checked()" /> Conserver les valeurs</label>
+	<label class="fullWidth"> <input type="checkbox" ng-model="buggy.keep_values" ng-change="checked()" /> Keep Current Values</label>
 	
 </form>

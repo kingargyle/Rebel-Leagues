@@ -2,32 +2,32 @@
 <form id="editGame" class="clear">
 
 	<select class="fullWidth" ng-model="selectedGameId" ng-options="game.game_id as (game.date + ' : ' + game.player1_nickname + ' (' + game.player1_faction_name + ') vs ' + game.player2_nickname + ' (' + game.player2_faction_name + ')') for game in games" ng-change="change(selectedGameId)">
-		<option value="">Choisir partie existante</option>
+		<option value="">Select existing player</option>
 	</select>
 	
 	<div ng-show="selectedGame">
-		<h2>Modifier les données :</h2>
+		<h2>Change data :</h2>
 
 		<div class="left">
 
 			<select class="fullWidth" ng-model="selectedGame.player1_id" ng-options="player.player_id as (player.nickname + ' (' + player.firstname + ' ' + player.lastname + ')') for player in players">
-				<option value="">Choisir premier joueur (vainqueur)</option>
+				<option value="">Choose first player (winner)</option>
 			</select>
 			
 			<select class="fullWidth" ng-model="selectedGame.player1_faction_id" ng-options="f.faction_id as f.name group by f.parent_faction_name for f in factions">
-				<option value="">Choisir faction du premier joueur</option>
+				<option value="">Select first player's faction</option>
 			</select>
 			
 			<select class="fullWidth" ng-model="selectedGame.player2_id" ng-options="player.player_id as (player.nickname + ' (' + player.firstname + ' ' + player.lastname + ')') for player in players">
-				<option value="">Choisir deuxième joueur</option>
+				<option value="">Choose second player</option>
 			</select>
 			
 			<select class="fullWidth" ng-model="selectedGame.player2_faction_id" ng-options="f.faction_id as f.name group by f.parent_faction_name for f in factions">
-				<option value="">Choisir faction du deuxième joueur</option>
+				<option value="">Select second player's faction</option>
 			</select>
 			
-			<label class="fullWidth"> <input type="checkbox" ng-model="selectedGame.is_draw" /> Finie en nulle</label>
-			<label class="fullWidth"> <input type="checkbox" ng-model="selectedGame.is_time_runout" /> Terminée par manque de temps</label>
+			<label class="fullWidth"> <input type="checkbox" ng-model="selectedGame.is_draw" /> Game is a Draw</label>
+			<label class="fullWidth"> <input type="checkbox" ng-model="selectedGame.is_time_runout" /> Time ran out</label>
 		
 			<div attribute-editor ng-model="selectedGame.attributes"></div>
 		
@@ -44,8 +44,8 @@
 			
 			<textarea class="fullWidth" ng-model="selectedGame.notes" placeholder="Notes"></textarea>
 			
-			<button ng-click="submit(selectedGame)" class="fullWidth">Modifier la partie</button>
-			<button class="danger fullWidth" ng-click="delete(selectedGame)" ng-if="user.tier <= 1">Supprimer la partie</button>
+			<button ng-click="submit(selectedGame)" class="fullWidth">Amend Game</button>
+			<button class="danger fullWidth" ng-click="delete(selectedGame)" ng-if="user.tier <= 1">Remove Game</button>
 		</div>
 	</div>
 	

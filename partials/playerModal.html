@@ -23,11 +23,11 @@
 			</div>
 			
 			<div class="stats">
-				{{ player.games_played }} parties jouées
+				{{ player.games_played }} games played
 				<div ng-show="player.games_played" class="stats_bar" ng-attr-style="width: {{ 100 * player.games_played / max | number:2 | decimalDot }}%">
-					<div class="darker" ng-attr-style="width: {{ 99.99 * player.games_won / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_won }} parties gagnées"></div>
-					<div ng-attr-style="width: {{ 99.99 * player.games_tied / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_tied }} parties annulées"></div>
-					<div class="lighter" ng-attr-style="width: {{ 99.99 * player.games_lost / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_lost }} parties perdues"></div>
+					<div class="darker" ng-attr-style="width: {{ 99.99 * player.games_won / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_won }} games won"></div>
+					<div ng-attr-style="width: {{ 99.99 * player.games_tied / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_tied }} games tied"></div>
+					<div class="lighter" ng-attr-style="width: {{ 99.99 * player.games_lost / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_lost }} games lost"></div>
 				</div>
 			</div>
 		</li>

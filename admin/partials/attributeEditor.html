@@ -2,7 +2,7 @@
 		<div ng-repeat="group in attribute_groups">
 			<b>{{group.attribute_group}} :</b>
 			<select class="fullWidth" ng-model="group.selected_attribute_id" ng-options="attr.attribute_id as attr.name for attr in group.group_attributes" ng-change="attributeGroupChange()">
-				<option value="">Choisir une option</option>
+				<option value="">Choose an option</option>
 			</select>
 		</div>
 		
@@ -16,8 +16,8 @@
 			</div>
 			
 			<select class="fullWidth" ng-model="selected_attribute" ng-options="t.attribute_id as t.name for t in attributes">
-				<option value="">Choisir un attribut à ajouter</option>
+				<option value="">Choose an attribute to add</option>
 			</select>
 			
-			<button ng-click="addAttribute(selected_attribute)" class="fullWidth">Ajouter l'attribut</button>
+			<button ng-click="addAttribute(selected_attribute)" class="fullWidth">Add the attribute</button>
 		</div>

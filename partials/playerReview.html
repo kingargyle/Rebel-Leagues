@@ -7,14 +7,14 @@
     
         <span class="nickname">{{ playerInfo.nickname }}</span>
         <span class="fullname">({{ playerInfo.firstname }} {{ playerInfo.lastname }})</span>
-        <span class="lastgame">Dernière partie le {{ playerStats.lastgame.date }} contre {{ playerStats.lastgame.nickname }} ({{ playerStats.lastgame.firstname }} {{ playerStats.lastgame.lastname }}).</span>
+        <span class="lastgame">The last game {{ playerStats.lastgame.date }} against {{ playerStats.lastgame.nickname }} ({{ playerStats.lastgame.firstname }} {{ playerStats.lastgame.lastname }}).</span>
         <span class="currentStreak" ng-show="playerStats.gameCounts.streakInfo.currentStreak > 3">
-            Présentement sur une séquence de {{ playerStats.gameCounts.streakInfo.currentStreak }} victoires consécutives!
+            Currently on a streak of {{ playerStats.gameCounts.streakInfo.currentStreak }} victories!
         </span>
         <span class="longestStreak" ng-show="playerStats.gameCounts.streakInfo.longestStreak > 3">
-            Série de victoires consécutive la plus longue: {{ playerStats.gameCounts.streakInfo.longestStreak }} victoires!
+            Longest streak: {{ playerStats.gameCounts.streakInfo.longestStreak }} victories!
         </span>
-		<span class="gameCounts">{{ playerStats.gameCounts.total }} parties jouées en tout<span ng-show="playerStats.gameCounts.online > 0"> ({{ playerStats.gameCounts.in_person }} en personne et {{ playerStats.gameCounts.online }} sur internet)</span>.</span>
+		<span class="gameCounts">{{ playerStats.gameCounts.total }} games played <span ng-show="playerStats.gameCounts.online > 0"> ({{ playerStats.gameCounts.in_person }} in person {{ playerStats.gameCounts.online }} on the Internet)</span>.</span>
 
     </div>
 	
@@ -35,11 +35,11 @@
 <section id="performanceHistory" ng-if="playerStats.performanceHistory">
 		
     <h2>
-        Historique de performance
+        Performance history
     </h2>
     
-    <span>
-        Ce graphique représente votre moyenne d'efficacité (pourcentage de victoires), calculée grâce à une moyenne mobile sur les 10 dernières parties.
+    <span>    
+        This is your average efficiency ( winning percentage ) calculated using a moving average of the last 10 games.    
     </span>
     
 	<canvas style="height: 200px"
@@ -53,8 +53,8 @@
 
 <section id="factionEfficiencyStatsWith">
 		
-    <h2>
-        Statistiques en jouant avec les différentes factions
+    <h2>  
+      Statistics by playing with the different factions
     </h2>
     <!--
     <div class="faction titleRow">
@@ -72,15 +72,15 @@
     
         <img class="badge" src="api/factions/{{ faction.faction_id }}/logo" tooltip="{{ faction.faction_name }}">
         
-        <span><strong>{{ faction.efficiencyRatioWith | number:0 }}%</strong> d'efficacité avec <strong>{{ faction.games_played_with }} parties</strong> jouées avec ({{ faction.games_won_with }}-{{ faction.games_lost_with }}-{{ faction.games_tied_with }})</span>
+        <span><strong>{{ faction.efficiencyRatioWith | number:0 }}%</strong> efficiency with <strong>{{ faction.games_played_with }} games</strong> played with ({{ faction.games_won_with }}-{{ faction.games_lost_with }}-{{ faction.games_tied_with }})</span>
         
         <div class="stats_bar" ng-attr-style="width: {{ 100 * faction.games_played_with / playerStats.maxGamesWithFaction | number:2 | decimalDot }}%">
         
-            <div class="faction_stats_bar darker" ng-attr-style="width: {{ 99.99 * faction.games_won_with / faction.games_played_with | number:2 | decimalDot }}%;" tooltip="{{ faction.games_won_with }} victoires avec {{ faction.faction_name }}"></div>
+            <div class="faction_stats_bar darker" ng-attr-style="width: {{ 99.99 * faction.games_won_with / faction.games_played_with | number:2 | decimalDot }}%;" tooltip="{{ faction.games_won_with }} wins against {{ faction.faction_name }}"></div>
         
-            <div class="faction_stats_bar" ng-attr-style="width: {{ 99.99 * faction.games_tied_with / faction.games_played_with | number:2 | decimalDot }}%;" tooltip="{{ faction.games_tied_with }} nulles avec {{ faction.faction_name }}"></div>
+            <div class="faction_stats_bar" ng-attr-style="width: {{ 99.99 * faction.games_tied_with / faction.games_played_with | number:2 | decimalDot }}%;" tooltip="{{ faction.games_tied_with }} draws against {{ faction.faction_name }}"></div>
             
-            <div class="faction_stats_bar lighter" ng-attr-style="width: {{ 99.99 * faction.games_lost_with / faction.games_played_with | number:2 | decimalDot }}%;" tooltip="{{ faction.games_lost_with }} défaites avec {{ faction.faction_name }}"></div>
+            <div class="faction_stats_bar lighter" ng-attr-style="width: {{ 99.99 * faction.games_lost_with / faction.games_played_with | number:2 | decimalDot }}%;" tooltip="{{ faction.games_lost_with }} losses against {{ faction.faction_name }}"></div>
             
         </div>
     </div>
@@ -91,22 +91,22 @@
 <section id="factionEfficiencyStatsAgainst">
 
     <h2>
-        Statistiques en jouant contre les différentes factions
+        Statistics by playing against different factions
     </h2>
     
     <div class="faction" ng-repeat="faction in playerStats.factionEfficiencyRatiosAgainst">
     
         <img class="badge" src="api/factions/{{ faction.faction_id }}/logo" tooltip="{{ faction.faction_name }}">
         
-        <span><strong>{{ faction.efficiencyRatioAgainst | number:0 }}%</strong> d'efficacité avec <strong>{{ faction.games_played_against }} parties</strong> jouées contre ({{ faction.games_won_against }}-{{ faction.games_lost_against }}-{{ faction.games_tied_against }})</span>
+        <span><strong>{{ faction.efficiencyRatioAgainst | number:0 }}%</strong> efficiency with <strong>{{ faction.games_played_against }} games</strong> played against ({{ faction.games_won_against }}-{{ faction.games_lost_against }}-{{ faction.games_tied_against }})</span>
         
         <div class="stats_bar" ng-attr-style="width: {{ 100 * faction.games_played_against / playerStats.maxGamesAgainstFaction | number:2 | decimalDot }}%">
         
-            <div class="faction_stats_bar darker" ng-attr-style="width: {{ 99.99 * faction.games_won_against / faction.games_played_against | number:2 | decimalDot }}%;" tooltip="{{ faction.games_won_against }} victoires contre {{ faction.faction_name }}"></div>
+            <div class="faction_stats_bar darker" ng-attr-style="width: {{ 99.99 * faction.games_won_against / faction.games_played_against | number:2 | decimalDot }}%;" tooltip="{{ faction.games_won_against }} wins against {{ faction.faction_name }}"></div>
         
-            <div class="faction_stats_bar" ng-attr-style="width: {{ 99.99 * faction.games_tied_against / faction.games_played_against | number:2 | decimalDot }}%;" tooltip="{{ faction.games_tied_against }} nulles contre {{ faction.faction_name }}"></div>
+            <div class="faction_stats_bar" ng-attr-style="width: {{ 99.99 * faction.games_tied_against / faction.games_played_against | number:2 | decimalDot }}%;" tooltip="{{ faction.games_tied_against }} draws against {{ faction.faction_name }}"></div>
             
-            <div class="faction_stats_bar lighter" ng-attr-style="width: {{ 99.99 * faction.games_lost_against / faction.games_played_against | number:2 | decimalDot }}%;" tooltip="{{ faction.games_lost_against }} défaites contre {{ faction.faction_name }}"></div>
+            <div class="faction_stats_bar lighter" ng-attr-style="width: {{ 99.99 * faction.games_lost_against / faction.games_played_against | number:2 | decimalDot }}%;" tooltip="{{ faction.games_lost_against }} losses against {{ faction.faction_name }}"></div>
             
         </div>
     </div>
@@ -117,36 +117,36 @@
 <section id="opponentStats">
 		
     <h2>
-        Statistiques contre les autres joueurs
+        Statistics against other players.
     </h2>
         
 	<ul>
 		<li ng-repeat="player in playerStats.opponents | limitTo:5">
             <span>
-                <strong>{{ player.games_played }} parties</strong> jouées contre <strong>{{ player.rival_nickname }}</strong> ({{ player.rival_firstname }} {{ player.rival_lastname }}) : {{ player.games_won }} victoires<span ng-show="player.games_lost">, {{ player.games_lost }} défaites</span><span ng-show="player.games_tied">, {{ player.games_tied }} nulles</span>
+                <strong>{{ player.games_played }} games</strong> played against <strong>{{ player.rival_nickname }}</strong> ({{ player.rival_firstname }} {{ player.rival_lastname }}) : {{ player.games_won }} wins<span ng-show="player.games_lost">, {{ player.games_lost }} losses</span><span ng-show="player.games_tied">, {{ player.games_tied }} draws</span>
             </span>
 			
             <div class="stats_bar" ng-attr-style="width: {{ 100 * player.games_played / playerStats.maxGamesAgainstPlayer | number:2 | decimalDot }}%">
-                <div class="darker" ng-attr-style="width: {{ 99.99 * player.games_won / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_won }} parties gagnées"></div>
-                <div ng-attr-style="width: {{ 99.99 * player.games_tied / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_tied }} parties annulées"></div>
-                <div class="lighter" ng-attr-style="width: {{ 99.99 * player.games_lost / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_lost }} parties perdues"></div>
+                <div class="darker" ng-attr-style="width: {{ 99.99 * player.games_won / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_won }} games won"></div>
+                <div ng-attr-style="width: {{ 99.99 * player.games_tied / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_tied }} games tied"></div>
+                <div class="lighter" ng-attr-style="width: {{ 99.99 * player.games_lost / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_lost }} games lost"></div>
             </div>
 		</li>
         
 		<li ng-repeat="player in playerStats.opponents.slice(5)" ng-show="playerStats.allOpponentsVisible">
             <span>
-                <strong>{{ player.games_played }} parties</strong> jouées contre <strong>{{ player.rival_nickname }}</strong> ({{ player.rival_firstname }} {{ player.rival_lastname }}) : {{ player.games_won }} victoires<span ng-show="player.games_lost">, {{ player.games_lost }} défaites</span><span ng-show="player.games_tied">, {{ player.games_tied }} nulles</span>
+                <strong>{{ player.games_played }} games</strong> played against <strong>{{ player.rival_nickname }}</strong> ({{ player.rival_firstname }} {{ player.rival_lastname }}) : {{ player.games_won }} victoires<span ng-show="player.games_lost">, {{ player.games_lost }} défaites</span><span ng-show="player.games_tied">, {{ player.games_tied }} nulles</span>
             </span>
 			
             <div class="stats_bar" ng-attr-style="width: {{ 100 * player.games_played / playerStats.maxGamesAgainstPlayer | number:2 | decimalDot }}%">
-                <div class="darker" ng-attr-style="width: {{ 99.99 * player.games_won / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_won }} parties gagnées"></div>
-                <div ng-attr-style="width: {{ 99.99 * player.games_tied / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_tied }} parties annulées"></div>
-                <div class="lighter" ng-attr-style="width: {{ 99.99 * player.games_lost / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_lost }} parties perdues"></div>
+                <div class="darker" ng-attr-style="width: {{ 99.99 * player.games_won / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_won }} games won"></div>
+                <div ng-attr-style="width: {{ 99.99 * player.games_tied / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_tied }} games tied"></div>
+                <div class="lighter" ng-attr-style="width: {{ 99.99 * player.games_lost / player.games_played | number:2 | decimalDot }}%" tooltip="{{ player.games_lost }} games lost"></div>
             </div>
 		</li>
         
         <li class="showAll" ng-hide="playerStats.allOpponentsVisible" ng-click="playerStats.allOpponentsVisible = true">
-            Montrer tous les autres joueurs...
+            Show all players...
         </li>
 	</ul>
 
