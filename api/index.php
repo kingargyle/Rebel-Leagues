@@ -112,6 +112,7 @@ function outputSuccess($data) {
 
 
 function outputError($data) {
+    error_log($data, 0);
 	return json_encode( array('status' => 'error', 'data' => $data), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
 }
 
@@ -1127,6 +1128,16 @@ class Admin {
 		
 		try {
 			getDatabase()->begin();
+			
+			$is_draw = $_POST['is_draw'];
+			if (empty($is_draw)) {
+			   $is_draw = 0;
+			}
+			
+			$is_time_runout = $_POST['is_time_runout'];
+			if (empty($is_time_runout)) {
+			    $is_time_runout = 0;
+			}
 		
 			$game_id = getDatabase()->execute('INSERT INTO games (player1_id, player1_faction_id, player2_id, player2_faction_id, date, is_draw, is_time_runout, notes) VALUES (:player1_id, :player1_faction_id, :player2_id, :player2_faction_id, :date, :is_draw, :is_time_runout, :notes)',
 			array(
@@ -1135,11 +1146,12 @@ class Admin {
 				':player2_id' => $_POST['player2_id'],
 				':player2_faction_id' => $_POST['player2_faction_id'],
 				':date' => $_POST['date'],
-				':is_draw' => $_POST['is_draw'],
-				':is_time_runout' => $_POST['is_time_runout'],
+				':is_draw' => $is_draw,
+				':is_time_runout' => $is_time_runout,
 				':notes' => $_POST['notes']
 			)
 			);
+			getDatabase()->commit();
 			
 			foreach ($_POST['attributes'] as $attribute_id) {
 				getDatabase()->execute('INSERT INTO games_attributes (game_id, attribute_id) VALUES (:game_id, :attribute_id)',
@@ -1155,8 +1167,8 @@ class Admin {
 			echo outputSuccess( array( 'game_id' => $game_id ) );
 			
 		} catch (Exception $e) {
-			getDatabase()->rollBack();
 			echo outputError($e->getMessage());
+			getDatabase()->rollBack();
 		}
 	}
 	
